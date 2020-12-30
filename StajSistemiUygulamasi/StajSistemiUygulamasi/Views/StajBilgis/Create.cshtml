@@ -1,0 +1,207 @@
+﻿@model StajSistemiUygulamasi.Models.StajBilgi
+
+@{
+    ViewBag.Title = "Staj Bilgileri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Staj Bilgileri</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.OgrenciNo, "OgrenciNo", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("OgrenciNo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OgrenciNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sinif, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="Sinif" class="form-control">
+                    <option>--Sınıfınızı seçiniz--</option>
+
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+
+
+                </select>
+                @Html.ValidationMessageFor(model => model.Sinif, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KurumAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KurumAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KurumAdi, "" +
+               "" +
+               "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sehir, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="Sehir" class="form-control">
+                    <option>--Şehrinizi seçiniz--</option>
+                    <option>Adana</option>
+                    <option>Adıyaman</option>
+                    <option>Afyonkarahisar</option>
+                    <option>Ağrı</option>
+                    <option>Aksaray</option>
+                    <option>Amasya</option>
+                    <option>Ankara</option>
+                    <option>Antalya</option>
+                    <option>Artvin</option>
+                    <option>Aydın</option>
+                    <option>Balıkesir</option>
+                    <option>Bartın</option>
+                    <option>Batman</option>
+                    <option>Bilecik</option>
+                    <option>Bayburt</option>
+                    <option>Bingöl</option>
+                    <option>Bitlis</option>
+                    <option>Bolu</option>
+                    <option>Burdur</option>
+                    <option>Bursa</option>
+                    <option>Çanakkale</option>
+                    <option>Çankırı</option>
+                    <option>Çorum</option>
+                    <option>Denizli</option>
+                    <option>Diyarbakır</option>
+                    <option>Düzce</option>
+                    <option>Edirne</option>
+                    <option>Elazığ</option>
+                    <option>Erzincan</option>
+                    <option>Erzurum</option>
+                    <option>Eskişehir</option>
+                    <option>Gaziantep</option>
+                    <option>Giresun</option>
+                    <option>Gümüşhane</option>
+                    <option>Hakkari</option>
+                    <option>Hatay</option>
+                    <option>Iğdır</option>
+                    <option>Isparta</option>
+                    <option>İstanbul</option>
+                    <option>İzmir</option>
+                    <option>Kahramanmaraş</option>
+                    <option>Karabük</option>
+                    <option>Karaman</option>
+                    <option>Kars</option>
+                    <option>Kastamonu</option>
+                    <option>Kayseri</option>
+                    <option>Kırıkkale</option>
+                    <option>Kırklareli</option>
+                    <option>Kırşehir</option>
+                    <option>Kilis</option>
+                    <option>Kocaeli</option>
+                    <option>Konya</option>
+                    <option>Kütahya</option>
+                    <option>Malatya</option>
+                    <option>Manisa</option>
+                    <option>Mardin</option>
+                    <option>Mersin</option>
+                    <option>Muğla</option>
+                    <option>Muş</option>
+                    <option>Nevşehir</option>
+                    <option>Niğde</option>
+                    <option>Ordu</option>
+                    <option>Osmaniye</option>
+                    <option>Rize</option>
+                    <option>Sakarya</option>
+                    <option>Samsun</option>
+                    <option>Siirt</option>
+                    <option>Sinop</option>
+                    <option>Sivas</option>
+                    <option>Şanlıurfa</option>
+                    <option>Şırnak</option>
+                    <option>Tekirdağ</option>
+                    <option>Tokat</option>
+                    <option>Trabzon</option>
+                    <option>Tunceli</option>
+                    <option>Uşak</option>
+                    <option>Van</option>
+                    <option>Yalova</option>
+                    <option>Yozgat</option>
+                    <option>Zonguldak</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Sehir, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StajKonusu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="StajKonusu" class="form-control">
+                    <option>--Staj konusunu seçiniz--</option>
+                    <option>Ar-Ge</option>
+                    <option>Yazılım</option>
+                    <option>Donanım</option>
+                    <option>Diğer</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.StajKonusu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BaslangicTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BaslangicTarihi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BaslangicTarihi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.BitisTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BitisTarihi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KabulEdilenGun, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KabulEdilenGun, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KabulEdilenGun, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StajDegerlendirildi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.StajDegerlendirildi)
+                    @Html.ValidationMessageFor(model => model.StajDegerlendirildi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Oluştur" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Kayıtları Gör", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

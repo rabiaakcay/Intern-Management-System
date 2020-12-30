@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="stajsistemiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="stajsistemiEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="fn_stajisistemi" IsComposable="true" ReturnType="Collection(Int32)">
+      <Parameter Name="BaslangicTarihi" Mode="In" Type="DateTime" />
+      <Parameter Name="BitisTarihi" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(stajsistemiModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(stajsistemiModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="DgsVeYatayBilgi" EntityType="stajsistemiModel.DgsVeYatayBilgi" />
+    <EntitySet Name="KomisyonBilgi" EntityType="stajsistemiModel.KomisyonBilgi" />
+    <EntitySet Name="MulakatBilgi" EntityType="stajsistemiModel.MulakatBilgi" />
+    <EntitySet Name="OgrenciBilgi" EntityType="stajsistemiModel.OgrenciBilgi" />
+    <EntitySet Name="StajBilgi" EntityType="stajsistemiModel.StajBilgi" />
+    <EntitySet Name="sysdiagrams" EntityType="stajsistemiModel.sysdiagrams" />
+    <AssociationSet Name="FK_DgsVeYatayBilgi_OgrenciBilgi" Association="stajsistemiModel.FK_DgsVeYatayBilgi_OgrenciBilgi">
+      <End Role="OgrenciBilgi" EntitySet="OgrenciBilgi" />
+      <End Role="DgsVeYatayBilgi" EntitySet="DgsVeYatayBilgi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MulakatBilgi_OgrenciBilgi" Association="stajsistemiModel.FK_MulakatBilgi_OgrenciBilgi">
+      <End Role="OgrenciBilgi" EntitySet="OgrenciBilgi" />
+      <End Role="MulakatBilgi" EntitySet="MulakatBilgi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StajBilgi_OgrenciBilgi" Association="stajsistemiModel.FK_StajBilgi_OgrenciBilgi">
+      <End Role="OgrenciBilgi" EntitySet="OgrenciBilgi" />
+      <End Role="StajBilgi" EntitySet="StajBilgi" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="DgsVeYatayBilgi">
+    <Key>
+      <PropertyRef Name="OncekiOkul" />
+      <PropertyRef Name="ToplamGun" />
+    </Key>
+    <Property Name="OgrenciNo" Type="Double" Nullable="false" />
+    <Property Name="OncekiOkul" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KurumAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ToplamGun" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="OgrenciBilgi" Relationship="stajsistemiModel.FK_DgsVeYatayBilgi_OgrenciBilgi" FromRole="DgsVeYatayBilgi" ToRole="OgrenciBilgi" />
+  </EntityType>
+  <EntityType Name="KomisyonBilgi">
+    <Key>
+      <PropertyRef Name="Gorev" />
+    </Key>
+    <Property Name="Unvan" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AkademisyenAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AkademisyenSoyadi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gorev" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MulakatBilgi">
+    <Key>
+      <PropertyRef Name="MulakatTarihiVeSaati" />
+    </Key>
+    <Property Name="OgrenciNo" Type="Double" Nullable="false" />
+    <Property Name="Devam" Type="Double" Nullable="false" />
+    <Property Name="CalismaVeCaba" Type="Double" Nullable="false" />
+    <Property Name="IsVaktindeDavranis" Type="Double" Nullable="false" />
+    <Property Name="AmireKarsiDavranis" Type="Double" Nullable="false" />
+    <Property Name="IsArkadaslarinaDavranis" Type="Double" Nullable="false" />
+    <Property Name="Prove" Type="Double" Nullable="false" />
+    <Property Name="Duzen" Type="Double" Nullable="false" />
+    <Property Name="Sunum" Type="Double" Nullable="false" />
+    <Property Name="Icerik" Type="Double" Nullable="false" />
+    <Property Name="Mulakat" Type="Double" Nullable="false" />
+    <Property Name="MulakatTarihiVeSaati" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MulakatYuzde" Type="Double" />
+    <NavigationProperty Name="OgrenciBilgi" Relationship="stajsistemiModel.FK_MulakatBilgi_OgrenciBilgi" FromRole="MulakatBilgi" ToRole="OgrenciBilgi" />
+  </EntityType>
+  <EntityType Name="OgrenciBilgi">
+    <Key>
+      <PropertyRef Name="OgrenciNo" />
+    </Key>
+    <Property Name="OgrenciNo" Type="Double" Nullable="false" />
+    <Property Name="Adi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyadi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ogretim" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DgsVeYatayBilgi" Relationship="stajsistemiModel.FK_DgsVeYatayBilgi_OgrenciBilgi" FromRole="OgrenciBilgi" ToRole="DgsVeYatayBilgi" />
+    <NavigationProperty Name="MulakatBilgi" Relationship="stajsistemiModel.FK_MulakatBilgi_OgrenciBilgi" FromRole="OgrenciBilgi" ToRole="MulakatBilgi" />
+    <NavigationProperty Name="StajBilgi" Relationship="stajsistemiModel.FK_StajBilgi_OgrenciBilgi" FromRole="OgrenciBilgi" ToRole="StajBilgi" />
+  </EntityType>
+  <EntityType Name="StajBilgi">
+    <Key>
+      <PropertyRef Name="KurumAdi" />
+      <PropertyRef Name="BaslangicTarihi" />
+    </Key>
+    <Property Name="OgrenciNo" Type="Double" Nullable="false" />
+    <Property Name="Sinif" Type="Int32" Nullable="false" />
+    <Property Name="KurumAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sehir" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StajKonusu" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BaslangicTarihi" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="BitisTarihi" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ToplamGun" Type="Int32" />
+    <Property Name="KabulEdilenGun" Type="Int32" Nullable="false" />
+    <Property Name="StajDegerlendirildi" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="OgrenciBilgi" Relationship="stajsistemiModel.FK_StajBilgi_OgrenciBilgi" FromRole="StajBilgi" ToRole="OgrenciBilgi" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_DgsVeYatayBilgi_OgrenciBilgi">
+    <End Type="stajsistemiModel.OgrenciBilgi" Role="OgrenciBilgi" Multiplicity="1" />
+    <End Type="stajsistemiModel.DgsVeYatayBilgi" Role="DgsVeYatayBilgi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Principal>
+      <Dependent Role="DgsVeYatayBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MulakatBilgi_OgrenciBilgi">
+    <End Type="stajsistemiModel.OgrenciBilgi" Role="OgrenciBilgi" Multiplicity="1" />
+    <End Type="stajsistemiModel.MulakatBilgi" Role="MulakatBilgi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Principal>
+      <Dependent Role="MulakatBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StajBilgi_OgrenciBilgi">
+    <End Type="stajsistemiModel.OgrenciBilgi" Role="OgrenciBilgi" Multiplicity="1" />
+    <End Type="stajsistemiModel.StajBilgi" Role="StajBilgi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Principal>
+      <Dependent Role="StajBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

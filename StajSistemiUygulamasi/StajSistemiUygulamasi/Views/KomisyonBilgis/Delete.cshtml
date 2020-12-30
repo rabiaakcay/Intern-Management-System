@@ -1,0 +1,56 @@
+﻿@model StajSistemiUygulamasi.Models.KomisyonBilgi
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sil</h2>
+
+<h3>Silmek İstediğinize Emin Misiniz?</h3>
+<div>
+    <h4>Komisyon Bilgi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Gorev)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gorev)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Unvan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unvan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AkademisyenAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AkademisyenAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AkademisyenSoyadi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AkademisyenSoyadi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Kayitlari Gor", "Index")
+        </div>
+    }
+</div>

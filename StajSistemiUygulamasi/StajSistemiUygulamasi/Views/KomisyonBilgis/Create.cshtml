@@ -1,0 +1,78 @@
+﻿@model StajSistemiUygulamasi.Models.KomisyonBilgi
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Komisyon</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Komisyon Bilgi</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Gorev, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select name="Gorev" class="form-control">
+                <option>--Görev Seçiniz--</option>
+                <option>Baskan</option>
+                <option>Üye 1</option>
+                <option>Üye 2</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.Gorev, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Unvan, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select name="Unvan" class="form-control">
+                <option>--Unvan Seçiniz--</option>
+                <option>Prof. Dr.</option>
+                <option>Doç. Dr.</option>
+                <option>Yrd. Doç. Dr.</option>
+                <option>Öğr. Gör.</option>
+                <option>Arş. Gör.</option>
+            </select>
+                @Html.ValidationMessageFor(model => model.Unvan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AkademisyenAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AkademisyenAdi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AkademisyenAdi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AkademisyenSoyadi, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.AkademisyenSoyadi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AkademisyenSoyadi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Olustur" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Kayitlari Gor", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

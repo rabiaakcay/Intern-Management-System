@@ -1,0 +1,154 @@
+﻿@model StajSistemiUygulamasi.Models.MulakatBilgi
+
+@{
+    ViewBag.Title = "Mülakat Değerlendirme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mülakat Değerlendirme</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.OgrenciNo, "OgrenciNo", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("OgrenciNo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OgrenciNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Devam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.Devam, "1") 1 &nbsp;
+                @Html.RadioButtonFor(model => model.Devam, "2") 2 &nbsp;
+                @Html.RadioButtonFor(model => model.Devam, "3") 3 &nbsp;
+                @Html.RadioButtonFor(model => model.Devam, "4") 4 &nbsp;
+                @Html.RadioButtonFor(model => model.Devam, "5") 5
+
+                @Html.ValidationMessageFor(model => model.Devam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CalismaVeCaba, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.CalismaVeCaba, "1") 1 &nbsp;
+                @Html.RadioButtonFor(model => model.CalismaVeCaba, "2") 2 &nbsp;
+                @Html.RadioButtonFor(model => model.CalismaVeCaba, "3") 3 &nbsp;
+                @Html.RadioButtonFor(model => model.CalismaVeCaba, "4") 4 &nbsp;
+                @Html.RadioButtonFor(model => model.CalismaVeCaba, "5") 5
+
+                @Html.ValidationMessageFor(model => model.CalismaVeCaba, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsVaktindeDavranis, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.IsVaktindeDavranis, "1") 1 &nbsp;
+                @Html.RadioButtonFor(model => model.IsVaktindeDavranis, "2") 2 &nbsp;
+                @Html.RadioButtonFor(model => model.IsVaktindeDavranis, "3") 3 &nbsp;
+                @Html.RadioButtonFor(model => model.IsVaktindeDavranis, "4") 4 &nbsp;
+                @Html.RadioButtonFor(model => model.IsVaktindeDavranis, "5") 5
+
+                @Html.ValidationMessageFor(model => model.IsVaktindeDavranis, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AmireKarsiDavranis, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.AmireKarsiDavranis, "1") 1 &nbsp;
+                @Html.RadioButtonFor(model => model.AmireKarsiDavranis, "2") 2 &nbsp;
+                @Html.RadioButtonFor(model => model.AmireKarsiDavranis, "3") 3 &nbsp;
+                @Html.RadioButtonFor(model => model.AmireKarsiDavranis, "4") 4 &nbsp;
+                @Html.RadioButtonFor(model => model.AmireKarsiDavranis, "5") 5
+
+                @Html.ValidationMessageFor(model => model.AmireKarsiDavranis, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsArkadaslarinaDavranis, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.RadioButtonFor(model => model.IsArkadaslarinaDavranis, "1") 1 &nbsp;
+                @Html.RadioButtonFor(model => model.IsArkadaslarinaDavranis, "2") 2 &nbsp;
+                @Html.RadioButtonFor(model => model.IsArkadaslarinaDavranis, "3") 3 &nbsp;
+                @Html.RadioButtonFor(model => model.IsArkadaslarinaDavranis, "4") 4 &nbsp;
+                @Html.RadioButtonFor(model => model.IsArkadaslarinaDavranis, "5") 5
+
+                @Html.ValidationMessageFor(model => model.IsArkadaslarinaDavranis, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Prove, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Prove, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Prove, "(0 - 100)", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Duzen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Duzen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Duzen, "(0 - 100)", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sunum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sunum, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sunum, "(0 - 100)", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Icerik, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Icerik, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Icerik, "(0 - 100)", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mulakat, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mulakat, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mulakat, "(0 - 100)", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MulakatTarihiVeSaati, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MulakatTarihiVeSaati, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MulakatTarihiVeSaati, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Olustur" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Kayitlari Gor", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

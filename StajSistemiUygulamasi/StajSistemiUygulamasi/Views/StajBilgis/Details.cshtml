@@ -1,0 +1,84 @@
+﻿@model StajSistemiUygulamasi.Models.StajBilgi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <h4>Staj Bilgi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OgrenciBilgi.OgrenciNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OgrenciBilgi.OgrenciNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sinif)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sinif)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sehir)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sehir)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StajKonusu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StajKonusu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BitisTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BitisTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ToplamGun)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToplamGun)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KabulEdilenGun)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KabulEdilenGun)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StajDegerlendirildi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StajDegerlendirildi)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Guncelle", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Kayilari Gor", "Index")
+</p>

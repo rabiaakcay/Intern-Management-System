@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="stajsistemiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DgsVeYatayBilgi">
+    <Key>
+      <PropertyRef Name="OncekiOkul" />
+      <PropertyRef Name="ToplamGun" />
+    </Key>
+    <Property Name="OgrenciNo" Type="float" Nullable="false" />
+    <Property Name="OncekiOkul" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="KurumAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ToplamGun" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KomisyonBilgi">
+    <Key>
+      <PropertyRef Name="Gorev" />
+    </Key>
+    <Property Name="Unvan" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AkademisyenAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AkademisyenSoyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gorev" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MulakatBilgi">
+    <Key>
+      <PropertyRef Name="MulakatTarihiVeSaati" />
+    </Key>
+    <Property Name="OgrenciNo" Type="float" Nullable="false" />
+    <Property Name="Devam" Type="float" Nullable="false" />
+    <Property Name="CalismaVeCaba" Type="float" Nullable="false" />
+    <Property Name="IsVaktindeDavranis" Type="float" Nullable="false" />
+    <Property Name="AmireKarsiDavranis" Type="float" Nullable="false" />
+    <Property Name="IsArkadaslarinaDavranis" Type="float" Nullable="false" />
+    <Property Name="Prove" Type="float" Nullable="false" />
+    <Property Name="Duzen" Type="float" Nullable="false" />
+    <Property Name="Sunum" Type="float" Nullable="false" />
+    <Property Name="Icerik" Type="float" Nullable="false" />
+    <Property Name="Mulakat" Type="float" Nullable="false" />
+    <Property Name="MulakatTarihiVeSaati" Type="datetime" Nullable="false" />
+    <Property Name="MulakatYuzde" Type="float" />
+  </EntityType>
+  <EntityType Name="OgrenciBilgi">
+    <Key>
+      <PropertyRef Name="OgrenciNo" />
+    </Key>
+    <Property Name="OgrenciNo" Type="float" Nullable="false" />
+    <Property Name="Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ogretim" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StajBilgi">
+    <Key>
+      <PropertyRef Name="KurumAdi" />
+      <PropertyRef Name="BaslangicTarihi" />
+    </Key>
+    <Property Name="OgrenciNo" Type="float" Nullable="false" />
+    <Property Name="Sinif" Type="int" Nullable="false" />
+    <Property Name="KurumAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sehir" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StajKonusu" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="BaslangicTarihi" Type="date" Nullable="false" />
+    <Property Name="BitisTarihi" Type="date" Nullable="false" />
+    <Property Name="ToplamGun" Type="int" />
+    <Property Name="KabulEdilenGun" Type="int" Nullable="false" />
+    <Property Name="StajDegerlendirildi" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_DgsVeYatayBilgi_OgrenciBilgi">
+    <End Role="OgrenciBilgi" Type="Self.OgrenciBilgi" Multiplicity="1" />
+    <End Role="DgsVeYatayBilgi" Type="Self.DgsVeYatayBilgi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Principal>
+      <Dependent Role="DgsVeYatayBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MulakatBilgi_OgrenciBilgi">
+    <End Role="OgrenciBilgi" Type="Self.OgrenciBilgi" Multiplicity="1" />
+    <End Role="MulakatBilgi" Type="Self.MulakatBilgi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Principal>
+      <Dependent Role="MulakatBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StajBilgi_OgrenciBilgi">
+    <End Role="OgrenciBilgi" Type="Self.OgrenciBilgi" Multiplicity="1" />
+    <End Role="StajBilgi" Type="Self.StajBilgi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenciBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Principal>
+      <Dependent Role="StajBilgi">
+        <PropertyRef Name="OgrenciNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="fn_stajisistemi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BaslangicTarihi" Type="datetime" Mode="In" />
+    <Parameter Name="BitisTarihi" Type="datetime" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ToplamGun" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="stajsistemiModelStoreContainer">
+    <EntitySet Name="DgsVeYatayBilgi" EntityType="Self.DgsVeYatayBilgi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KomisyonBilgi" EntityType="Self.KomisyonBilgi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MulakatBilgi" EntityType="Self.MulakatBilgi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OgrenciBilgi" EntityType="Self.OgrenciBilgi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StajBilgi" EntityType="Self.StajBilgi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DgsVeYatayBilgi_OgrenciBilgi" Association="Self.FK_DgsVeYatayBilgi_OgrenciBilgi">
+      <End Role="OgrenciBilgi" EntitySet="OgrenciBilgi" />
+      <End Role="DgsVeYatayBilgi" EntitySet="DgsVeYatayBilgi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MulakatBilgi_OgrenciBilgi" Association="Self.FK_MulakatBilgi_OgrenciBilgi">
+      <End Role="OgrenciBilgi" EntitySet="OgrenciBilgi" />
+      <End Role="MulakatBilgi" EntitySet="MulakatBilgi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StajBilgi_OgrenciBilgi" Association="Self.FK_StajBilgi_OgrenciBilgi">
+      <End Role="OgrenciBilgi" EntitySet="OgrenciBilgi" />
+      <End Role="StajBilgi" EntitySet="StajBilgi" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

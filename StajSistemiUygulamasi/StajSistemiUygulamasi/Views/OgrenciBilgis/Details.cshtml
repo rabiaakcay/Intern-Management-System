@@ -1,0 +1,43 @@
+﻿@model StajSistemiUygulamasi.Models.OgrenciBilgi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <h4>Ogrenci Bilgi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soyadi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soyadi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ogretim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ogretim)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Guncelle", "Edit", new { id = Model.OgrenciNo }) |
+    @Html.ActionLink("Kayitlari Gor", "Index")
+</p>

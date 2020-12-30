@@ -1,0 +1,76 @@
+﻿@model IEnumerable<StajSistemiUygulamasi.Models.StajBilgi>
+
+@{
+    ViewBag.Title = "StajBilgi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Staj Bilgi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Olustur", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sinif)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sehir)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StajKonusu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BitisTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToplamGun)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KabulEdilenGun)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StajDegerlendirildi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OgrenciBilgi.Adi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sinif)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sehir)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StajKonusu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BitisTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToplamGun)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KabulEdilenGun)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StajDegerlendirildi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OgrenciBilgi.Adi)
+        </td>
+        <td>
+            @Html.ActionLink("Guncelle", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Detaylar", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Sil", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

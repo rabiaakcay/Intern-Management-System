@@ -1,0 +1,46 @@
+﻿@model StajSistemiUygulamasi.Models.DgsVeYatayBilgi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <h4>Dgs Ve Yatay Bilgi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OgrenciBilgi.OgrenciNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OgrenciBilgi.OgrenciNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OncekiOkul)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OncekiOkul)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.KurumAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KurumAdi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ToplamGun)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToplamGun)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Guncelle", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Kayitlari Gor", "Index")
+</p>

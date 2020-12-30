@@ -1,0 +1,55 @@
+﻿@model IEnumerable<StajSistemiUygulamasi.Models.KomisyonBilgi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kayitlar</h2>
+
+<p>
+    @Html.ActionLink("Komisyon Ekle", "Create")
+
+</p>
+<div>@Html.ActionLink("Öğrenci Mülakatını Listele","OgrenciKomisyon")
+  </div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Gorev)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Unvan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AkademisyenAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AkademisyenSoyadi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gorev)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Unvan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AkademisyenAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AkademisyenSoyadi)
+        </td>
+        <td>
+            @Html.ActionLink("Guncelle", "Edit", new { id = item.Gorev }) |
+            @Html.ActionLink("Detaylar", "Details", new { id = item.Gorev }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.Gorev })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<StajSistemiUygulamasi.Models.OgrenciBilgi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Yeni Olustur", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soyadi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ogretim)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soyadi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ogretim)
+        </td>
+        <td>
+            @Html.ActionLink("Guncelle", "Edit", new { id=item.OgrenciNo }) |
+            @Html.ActionLink("Detaylar", "Details", new { id=item.OgrenciNo }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.OgrenciNo })
+        </td>
+    </tr>
+}
+
+</table>

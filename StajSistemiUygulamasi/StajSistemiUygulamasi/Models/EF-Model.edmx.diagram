@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7f73147c71d74d0e9239538c0a9cd169" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="stajsistemiModel.DgsVeYatayBilgi" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="stajsistemiModel.KomisyonBilgi" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="stajsistemiModel.MulakatBilgi" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="stajsistemiModel.OgrenciBilgi" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="stajsistemiModel.StajBilgi" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="stajsistemiModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="3.75" />
+        <AssociationConnector Association="stajsistemiModel.FK_DgsVeYatayBilgi_OgrenciBilgi" />
+        <AssociationConnector Association="stajsistemiModel.FK_MulakatBilgi_OgrenciBilgi" />
+        <AssociationConnector Association="stajsistemiModel.FK_StajBilgi_OgrenciBilgi" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

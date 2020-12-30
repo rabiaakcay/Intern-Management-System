@@ -1,0 +1,114 @@
+﻿@model IEnumerable<StajSistemiUygulamasi.Models.MulakatBilgi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Yeni Olustur", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OgrenciBilgi.Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OgrenciBilgi.Soyadi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OgrenciBilgi.OgrenciNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Devam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CalismaVeCaba)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsVaktindeDavranis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AmireKarsiDavranis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsArkadaslarinaDavranis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prove)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duzen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sunum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Icerik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mulakat)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.MulakatTarihiVeSaati)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OgrenciBilgi.Adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OgrenciBilgi.Soyadi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OgrenciBilgi.OgrenciNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Devam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CalismaVeCaba)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsVaktindeDavranis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AmireKarsiDavranis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsArkadaslarinaDavranis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prove)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duzen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sunum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Icerik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mulakat)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.MulakatTarihiVeSaati)
+        </td>
+        <td>
+            @Html.ActionLink("Guncelle", "Edit", new { id = item.MulakatTarihiVeSaati }) |
+            @Html.ActionLink("Detaylar", "Details", new { id = item.MulakatTarihiVeSaati }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.MulakatTarihiVeSaati })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<StajSistemiUygulamasi.Models.DgsVeYatayBilgi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Yeni Olustur", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OgrenciBilgi.OgrenciNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OncekiOkul)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KurumAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToplamGun)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+        @Html.DisplayFor(modelItem => item.OgrenciBilgi.OgrenciNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OncekiOkul)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KurumAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToplamGun)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Guncelle", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Detaylar", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Sil", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

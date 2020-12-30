@@ -1,0 +1,113 @@
+﻿@model StajSistemiUygulamasi.Models.MulakatBilgi
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sil</h2>
+
+<h3>Silmek İstediğinize Emin Misiniz?</h3>
+<div>
+    <h4>Mulakat Bilgi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Devam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Devam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CalismaVeCaba)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CalismaVeCaba)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsVaktindeDavranis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsVaktindeDavranis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmireKarsiDavranis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmireKarsiDavranis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsArkadaslarinaDavranis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsArkadaslarinaDavranis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prove)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prove)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duzen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duzen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sunum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sunum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Icerik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Icerik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mulakat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mulakat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OgrenciBilgi.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OgrenciBilgi.Adi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Kayitlari Gor", "Index")
+        </div>
+    }
+</div>
