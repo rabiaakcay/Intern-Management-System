@@ -1,1 +1,1 @@
-# Internship-System-Project
+# Intern-Management-System-Project
